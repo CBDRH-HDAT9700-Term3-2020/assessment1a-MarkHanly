@@ -1,0 +1,87 @@
+---
+title: "HDAT9700: Assessment 1A - Chapters 1-3"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+### Submission instructions
+This is an R Markdown document, an example of *literate programming* which allows users to interweave text, statistical output and the code that produces that output. 
+
+To complete your assignment:   
+
+* Edit this file directly, interweaving text and R code as appropriate to answer the questions below. Remember to `Knit` the file to make sure everything is running smoothly. Detailed information on R Markdown is available [here](https://rmarkdown.rstudio.com/lesson-1.html), and there is a useful cheat sheet [here](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf).  
+
+* Use Git to `commit` changes you make in this repo locally.   
+
+* `Push` the repo, together with this edited `.Rmd` file, the corresponding `.md` file and any other relevant files to GitHub.  
+
+You can `commit` and `push` as often as necessary---your assessment will be graded on the most recent version of your repo at the assessment due date. 
+
+Good luck!
+
+
+***
+
+### Overview
+
+In this assignment you are provided with observational data on maternal characteristics and birth outcomes. Your aim is to estimate the total causal effect of maternal smoking during pregnancy on birth weight.  
+
+The data come from [Abrevaya (2006)](https://onlinelibrary.wiley.com/doi/abs/10.1002/jae.851) _Estimating the effect of smoking on birth outcomes using a matched panel data approach_. More details can be found [here](http://qed.econ.queensu.ca/jae/2006-v21.4/abrevaya/readme.ja.txt). The dataset has been restricted to mother's first birth and **for the purposes of this assignment can be treated as observational data generated through a simple random sample of births**. So the emphasis in this assignment is on drawing and understanding a DAG, implementing matching and correctly interpreting the results, you don't have to worry about sample corrections (e.g. weighting) or correcting for dependency in matched pairs. 
+
+#### Here is a brief description of the available variables:                                         
+* **momid** identification number of the mother                                    
+* **idx** index number of a mother's birth                              
+* **mage** age of mother (in years)                                               
+* **gestat** length of gestation (in weeks)                                         
+* **birwt** birthweight (in grams)
+* **smoke** indicator variable for smoking status (1=smoker, 0=nonsmoker)
+* **male** sex of the baby (1=male, 0=female)
+* **collgrad** college-graduate indicator (1=graduate, 0=non-graduate)
+* **black** indicator variable for black race (1=black, 0=white)
+
+These data are contained in your assignment repo in the file `dt.rda`, which can be loaded as follows:
+
+``` {r read-data}
+load("dt.rda")
+```
+
+***
+
+### Assessment questions 
+
+(1) Draw a DAG to represent the causal relationship between maternal smoking and birth weight. Write a brief descriptive paragraph that highlights any backdoor path(s) and the observed variables that might be useful to close the path(s). (25%)
+
+_Hint: Not all variables that appear in the dataset need to be on your DAG and not all nodes that are on your DAG will necessarily be observed variables. You can draw your DAG using whatever tool you prefer. Options include `ggdag()` in R, [daggity.net](http://dagitty.net/dags.html), a screenshot from a DAG drawn in MS Word etc, or an embedded picture of a DAG drawn with pen and paper._
+
+(2) Match smokers to non-smokers using a matching method of your choice and matching variables that are consistent with your DAG. Briefly summarise the balance in both cases, drawing on appropriate numerical and graphical summaries. (25%)
+
+(3) Fit the model birwt ~ smoke in (i) The raw data and (ii) the matched data. Briefly describe the model results. How does the estimated effect for smoking change and why? (25%)
+
+(4) Briefly discuss any limitations of the model 3(ii) and argue whether or not the assumption of exchangeability is likely to hold. (25%)
+
+***
+
+### Solution 
+
+***
+
+### Student declaration
+
+**_Instructions: Indicate that you understand and agree with the following three statements by typing an x in the square brackets below, e.g. [x]._** 
+
+I declare that this assessment item is my own work, except where acknowledged, and has not been submitted for academic credit elsewhere or previously, or produced independently of this course (e.g. for a third party such as your place of employment) and acknowledge that the assessor of this item may, for the purpose of assessing this item: (i) Reproduce this assessment item and provide a copy to another member of the University; and/or (ii) Communicate a copy of this assessment item to a plagiarism checking service (which may then retain a copy of the assessment item on its database for the purpose of future plagiarism checking).  
+
+- [ ] I understand and agree
+
+I certify that I have read and understood the University Rules in respect of Student Academic Misconduct.  
+
+- [ ] I understand and agree
+
+I have a backup copy of the assessment.  
+
+- [ ] I understand and agree
+
